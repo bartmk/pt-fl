@@ -16,6 +16,11 @@ async function main() {
     });
     const { free_leech } = response?.data?.details || {};
 
+    if (!free_leech) {
+      console.info('No free leech');
+      return;
+    }
+
     const resend = new Resend(resendApiKey);
 
     await resend.emails.send({
