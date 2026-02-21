@@ -1,0 +1,35 @@
+name: Monitor API
+
+# ============================================================
+# KONFIGURACJA HARMONOGRAMU - Zmień tutaj co ile ma się odpalać
+# ============================================================
+# Dostępne opcje:
+#   '0 * * * *'       = Co godzinę
+#   '0 0 * * *'       = Raz dziennie (o północy UTC)
+#   '0 0 * * 0'       = Raz w tygodniu (niedziela)
+#   '0 */6 * * *'     = Co 6 godzin
+#   '0 0,12 * * *'    = Dwukrotnie dziennie (o 0:00 i 12:00 UTC)
+#   '30 * * * *'      = Co godzinę o 30. minucie
+# ============================================================
+
+on:
+  schedule:
+    - cron: '0 * * * *'  # ← TU ZMIEŃ HARMONOGRAM
+  workflow_dispatch:
+
+jobs:
+  check-status:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+      - run: npm install axios resend
+      - run: node index.js
+        env:
+          API_KEY: ${{ secrets.API_KEY }}
+          API_URL: ${{ secrets.API_URL }}
+          RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
+          EMAIL_TO: ${{ secrets.EMAIL_TO }}
+          EMAIL_FROM: ${{ secrets.EMAIL_FROM }}
