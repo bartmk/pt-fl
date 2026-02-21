@@ -14,7 +14,7 @@ name: Monitor API
 
 on:
   schedule:
-    - cron: '* * * * *'  # ← Co minutę
+    - cron: '*/5 * * * *'  # ← Co 5 minut (TEST)
   workflow_dispatch:
 
 jobs:
