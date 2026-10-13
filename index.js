@@ -15,7 +15,7 @@ async function main() {
         'Api-Key': apiKey
       }
     });
-    if (isDebug) console.log(response)
+    if (isDebug) console.log(response?.data)
     const { free_leech } = response?.data?.details || {};
 
     if (!free_leech) {
