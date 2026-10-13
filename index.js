@@ -9,7 +9,6 @@ async function main() {
     const resendApiKey = process.env.RESEND_API_KEY;
     const emailTo = process.env.EMAIL_TO;
     const emailFrom = process.env.EMAIL_FROM;
-    const 
 
     const response = await axios.get(apiUrl, {
       headers: {
