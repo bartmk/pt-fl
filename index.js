@@ -1,5 +1,6 @@
 const axios = require('axios');
 const { Resend } = require('resend');
+const isDebug = !!process.env.IS_DEBUG;
 
 async function main() {
   try {
@@ -8,12 +9,14 @@ async function main() {
     const resendApiKey = process.env.RESEND_API_KEY;
     const emailTo = process.env.EMAIL_TO;
     const emailFrom = process.env.EMAIL_FROM;
+    const 
 
     const response = await axios.get(apiUrl, {
       headers: {
         'Api-Key': apiKey
       }
     });
+    if (isDebug) console.log(response)
     const { free_leech } = response?.data?.details || {};
 
     if (!free_leech) {
