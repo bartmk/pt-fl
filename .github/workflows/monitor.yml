@@ -16,7 +16,10 @@ on:
   schedule:
     - cron: '0 0 * * *' # ← Co godzinę
   workflow_dispatch:
-
+    inputs:
+      is_debug:
+        required: false
+        default: false
 jobs:
   check-status:
     runs-on: ubuntu-latest
