@@ -1,6 +1,6 @@
 const axios = require('axios');
 const { Resend } = require('resend');
-const isDebug = !!process.env.IS_DEBUG;
+const isDebug = process.env.IS_DEBUG === 'true';
 
 async function main() {
   try {
